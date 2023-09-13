@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System.Linq.Expressions;
 
 namespace ImplementILogger.Controllers
@@ -22,6 +23,9 @@ namespace ImplementILogger.Controllers
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
+
+            //logger.LogInformation($"Enter /api/WeatherForecast/{id}/{fail}");
+            _logger.LogInformation($"Enter/api/WeatherForecast/GetWeatherForecast");
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
@@ -29,6 +33,7 @@ namespace ImplementILogger.Controllers
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+          
         }
         [HttpPost(Name = "SaveForecast")]
         public Exception SaveForecast(TestModel testModel)

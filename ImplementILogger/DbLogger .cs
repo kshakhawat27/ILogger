@@ -83,6 +83,8 @@ namespace ImplementILogger
                                 if (!string.IsNullOrWhiteSpace(logLevel.ToString()))
                                 {
                                     values["LogLevel"] = logLevel.ToString();
+                                    values["EndPoint"] = state == null? "": state.ToString();
+
                                 }
                                 break;
                             case "ThreadId":
